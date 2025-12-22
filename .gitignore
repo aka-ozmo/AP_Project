@@ -1,0 +1,10 @@
+# Node.js dependencies
+/node_modules
+
+# Compiled CSS files (these are generated from Sass)
+/css/main.css
+/css/main.css.map
+
+# VS Code user-specific settings
+.vscode/*
+!.vscode/launch.json
