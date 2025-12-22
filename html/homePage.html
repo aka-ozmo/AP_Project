@@ -1,94 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torrentflix - HD Movie Listings</title>
-    <!-- Load Bulma CSS (Replaced Tailwind) -->
-    <link rel="stylesheet" href="../css/bulma.min.css">
-   <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"> -->
-    <!-- Load Lucide Icons for aesthetic -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torrentflix - HD Movie Listings</title>
 
-    <!-- START OF "STYLES.CSS" CONTENT (Custom Dark Theme & Card Effects for Bulma) -->
 
-    <!--link rel="stylesheet" type="text/css" href="AP_PROJECT/node_modules/bulma/css/bulma.main.css" -->
-    <link href="/node_modules/bulma/css/bulma.min.css" type="text/css" rel="stylesheet">
+  <!-- Load Custom Bulma Theme -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- Load Lucide Icons for aesthetic -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
 </head>
+
 <body>
 
-    <!-- Header & Navigation (Bulma Navbar) -->
-    <nav class="navbar custom-navbar-bg is-dark is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="container is-max-widescreen">
-            <div class="navbar-brand">
-                <a href="#" class="navbar-item is-size-3 has-text-weight-bold has-text-white">
-                    <span class="has-text-info">Torrent</span><span class="has-text-grey-light">flix</span>
-                </a>
-            </div>
+  <!-- Header & Navigation (Bulma Navbar) -->
+  <nav class="navbar custom-navbar-bg is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="container is-max-widescreen">
+      <div class="navbar-brand">
+        <a href="#" class="navbar-item is-size-3 has-text-weight-bold has-text-white">
+          <span class="has-text-info">Torrent</span><span class="has-text-grey-light">flix</span>
+        </a>
+      </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-end is-align-items-center">
-                    <!-- Search Bar -->
-                    <div class="navbar-item is-expanded">
-                        <div class="field has-addons">
-                            <div class="control has-icons-left is-expanded">
-                                <input
-                                    type="search"
-                                    id="movie-search"
-                                    placeholder="Search for movies, actors, or genres..."
-                                    class="input is-rounded has-background-grey-darker has-text-light"
-                                >
-                                <span class="icon is-left">
-                                    <i data-lucide="search" class="w-4 h-4 has-text-grey-light"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Menu Links -->
-                    <a href="#" class="navbar-item has-text-grey-light">Trending</a>
-                    <a href="#" class="navbar-item has-text-grey-light">4K</a>
-                    <a href="#" class="navbar-item has-text-grey-light">Top Rated</a>
-                    <a href="#" class="navbar-item has-text-grey-light">Log In</a>
-                </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end is-align-items-center">
+          <!-- Search Bar -->
+          <div class="navbar-item is-expanded">
+            <div class="field has-addons">
+              <div class="control has-icons-left is-expanded">
+                <input type="search" id="movie-search" placeholder="Search for movies, actors, or genres..."
+                  class="input is-rounded has-background-grey-darker has-text-light">
+                <span class="icon is-left">
+                  <i data-lucide="search" class="w-4 h-4 has-text-grey-light"></i>
+                </span>
+              </div>
             </div>
+          </div>
+
+          <!-- Menu Links -->
+          <a href="#" class="navbar-item has-text-grey-light">Trending</a>
+          <a href="#" class="navbar-item has-text-grey-light">4K</a>
+          <a href="#" class="navbar-item has-text-grey-light">Top Rated</a>
+          <a href="#" class="navbar-item has-text-grey-light">Log In</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Main Content Area -->
-    <div class="container is-max-widescreen main-container pt-6" style="margin-top: 52px;">
+  <!-- Main Content Area -->
+  <div class="container is-max-widescreen main-container pt-6" style="margin-top: 52px;">
 
-        <!-- Introduction Banner -->
-        <div class="section pt-6 pb-6 mt-4 mb-5 custom-banner-bg has-text-centered">
-            <h1 class="title is-3 has-text-white mb-2">Download YIFY Movies in HD</h1>
-            <p class="subtitle is-5 has-text-info">Browse the largest catalog of high-quality, lightweight movie downloads.</p>
-        </div>
-
-        <!-- Movie Listing Grid -->
-        <section class="section pt-0">
-            <h2 class="title is-4 custom-section-title">
-                <span class="icon"><i data-lucide="monitor" class="w-6 h-6"></i></span>
-                Latest Releases
-            </h2>
-
-            <!-- Bulma Columns Grid -->
-            <div id="movie-grid" class="columns is-multiline is-mobile">
-                <!-- Movie cards will be inserted here by JavaScript -->
-            </div>
-        </section>
+    <!-- Introduction Banner -->
+    <div class="section pt-6 pb-6 mt-4 mb-5 custom-banner-bg has-text-centered">
+      <h1 class="title is-3 has-text-white mb-2">Download YIFY Movies in HD</h1>
+      <p class="subtitle is-5 has-text-info">Browse the largest catalog of high-quality, lightweight movie downloads.
+      </p>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer custom-navbar-bg p-4 has-text-centered">
-        <p class="has-text-grey-light is-size-7">
-            &copy; 2024 Torrentflix Clone. All rights reserved. |
-            <a href="#" class="has-text-info">Terms</a> |
-            <a href="#" class="has-text-info">Contact</a>
-        </p>
-    </footer>
+    <!-- Film Gallery (from index.html) -->
+    <section class="section">
+      <h1 class="title">Latest Releases</h1>
+      <p class="subtitle">Click a poster to view details.</p>
+      <div id="gallery" class="columns is-multiline"></div>
+    </section>
+  </div>
 
-    <script src="/html/index.js"></script>
+  <!-- Footer -->
+  <footer class="footer custom-navbar-bg p-4 has-text-centered">
+    <p class="has-text-grey-light is-size-7">
+      &copy; 2024 Torrentflix Clone. All rights reserved. |
+      <a href="#" class="has-text-info">Terms</a> |
+      <a href="#" class="has-text-info">Contact</a>
+    </p>
+  </footer>
+
+  <script src="../js/generate-details.js"></script>
+  <script src="../js/homepage.js"></script>
 
 </body>
+
 </html>

@@ -1,289 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Film details</title>
-		<link rel="stylesheet" href="../css/bulma.min.css" />
-		<link rel="stylesheet" href="../css/templete-styles.css" />
-	</head>
-	<body>
-		<section class="section">
-			<div class="container">
-				<nav class="level">
-					<div class="level-left">
-						<div class="level-item">
-							<a class="button is-light" href="home-demo.html">← Back to gallery</a>
-						</div>
-					</div>
-				</nav>
 
-				<div id="not-found" class="notification is-warning is-hidden">
-					Movie details not found. Try returning to the gallery.
-				</div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Film details</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
 
-				<!-- Main movie root: starts hidden until populated -->
-				<div id="movie-root" class="is-hidden">
-					<!-- Top section: poster | details+downloads | similar -->
-					<section id="top-section" class="columns is-variable is-6">
-						<aside class="column is-3" id="col-poster">
-							<figure class="image poster-wrap">
-								<img id="movie-poster" alt="movie poster" />
-							</figure>
-							<div id="poster-actions" class="buttons" style="margin-top:0.75rem"></div>
-						</aside>
+<body>
+  <section class="section">
+    <div class="container">
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <a class="button is-light" href="homepage.html">← Back to gallery</a>
+          </div>
+        </div>
+      </nav>
 
-						<div class="column is-5" id="col-details">
-							<h1 id="movie-title" class="title"></h1>
-							<h2 id="movie-sub" class="subtitle has-text-grey"></h2>
+      <div id="not-found" class="notification is-warning is-hidden">
+        Movie details not found. Try returning to the gallery.
+      </div>
 
-							<div class="tags are-medium" id="movie-meta">
-								<span class="tag is-info" id="movie-rating"></span>
-							</div>
+      <!-- Main movie root: starts hidden until populated -->
+      <div id="movie-root" class="is-hidden">
+        <!-- Top section: poster | details+downloads | similar -->
+        <section id="top-section" class="columns is-variable is-6">
+          <aside class="column is-3" id="col-poster">
+            <figure class="image poster-wrap">
+              <img id="movie-poster" alt="movie poster" />
+            </figure>
+            <div id="poster-actions" class="buttons" style="margin-top:0.75rem"></div>
+          </aside>
 
-							<div id="movie-core" class="content" style="margin-top:1rem">
-								<p id="movie-description"></p>
-								<div id="movie-genres" style="margin-top:0.75rem"></div>
-							</div>
+          <div class="column is-5" id="col-details">
+            <h1 id="movie-title" class="title"></h1>
+            <h2 id="movie-sub" class="subtitle has-text-grey"></h2>
 
-							<!-- Downloads / Quick actions -->
-							<div id="movie-downloads" style="margin-top:1rem"></div>
-						</div>
+            <div class="tags are-medium" id="movie-meta">
+              <span class="tag is-info" id="movie-rating"></span>
+            </div>
 
-						<aside class="column is-4" id="col-similar">
-							<h3 class="title is-6">Recommended</h3>
-							<div id="similar-list" class="columns is-multiline"></div>
-						</aside>
-					</section>
+            <div id="movie-core" class="content" style="margin-top:1rem">
+              <p id="movie-description"></p>
+              <div id="movie-genres" style="margin-top:0.75rem"></div>
+            </div>
 
-					<!-- Middle section: more details (actors, summary, languages, downloads details) -->
-					<section id="middle-section" class="section">
-						<div class="columns is-variable is-6">
-							<div class="column is-two-thirds">
-								<h3 class="title is-5">Summary</h3>
-								<div id="movie-summary" class="content"></div>
+            <!-- Downloads / Quick actions -->
+            <div id="movie-downloads" style="margin-top:1rem"></div>
+          </div>
 
-								<h3 class="title is-6">Cast</h3>
-								<div id="movie-cast" class="tags"></div>
-							</div>
-							<div class="column">
-								<h3 class="title is-6">Details & Options</h3>
-								<ul id="movie-details-list"></ul>
-							</div>
-						</div>
-					</section>
+          <aside class="column is-4" id="col-similar">
+            <h3 class="title is-6">Recommended</h3>
+            <div id="similar-list" class="columns is-multiline"></div>
+          </aside>
+        </section>
 
-					<!-- Bottom section: comments | scenarios -->
-					<section id="bottom-section" class="section">
-						<div class="columns">
-							<div class="column is-two-thirds">
-								<h3 class="title is-5">Comments</h3>
-								<div id="comments-root">
-									<!-- simple comment form -->
-									<div class="box">
-										<textarea id="comment-input" class="textarea" placeholder="Write a comment..."></textarea>
-										<div style="margin-top:0.5rem; display:flex; gap:0.5rem;">
-											<button id="comment-post" class="button is-primary">Post</button>
-										</div>
-									</div>
-									<div id="comment-list"></div>
-								</div>
-							</div>
-							<div class="column">
-								<h3 class="title is-6">Key Scenes</h3>
-								<div id="movie-scenes"></div>
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-		</section>
+        <!-- Middle section: more details (actors, summary, languages, downloads details) -->
+        <section id="middle-section" class="section">
+          <div class="columns is-variable is-6">
+            <div class="column is-two-thirds">
+              <h3 class="title is-5">Summary</h3>
+              <div id="movie-summary" class="content"></div>
 
-		<script src="../js/generate-details.js"></script>
-		<script>
-			// Read key from query and populate template
-			(function () {
-				const params = new URLSearchParams(window.location.search);
-				const key = params.get('key');
-				if (!key) {
-					document.getElementById('not-found').classList.remove('is-hidden');
-					return;
-				}
+              <h3 class="title is-6">Cast</h3>
+              <div id="movie-cast" class="tags"></div>
+            </div>
+            <div class="column">
+              <h3 class="title is-6">Details & Options</h3>
+              <ul id="movie-details-list"></ul>
+            </div>
+          </div>
+        </section>
 
-				const raw = sessionStorage.getItem(key);
-				if (!raw) {
-					document.getElementById('not-found').classList.remove('is-hidden');
-					return;
-				}
+        <!-- Bottom section: comments | scenarios -->
+        <section id="bottom-section" class="section">
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <h3 class="title is-5">Comments</h3>
+              <div id="comments-root">
+                <!-- simple comment form -->
+                <div class="box">
+                  <textarea id="comment-input" class="textarea" placeholder="Write a comment..."></textarea>
+                  <div style="margin-top:0.5rem; display:flex; gap:0.5rem;">
+                    <button id="comment-post" class="button is-primary">Post</button>
+                  </div>
+                </div>
+                <div id="comment-list"></div>
+              </div>
+            </div>
+            <div class="column">
+              <h3 class="title is-6">Key Scenes</h3>
+              <div id="movie-scenes"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
 
-				let movie;
-				try {
-					movie = JSON.parse(raw);
-				} catch (e) {
-					document.getElementById('not-found').classList.remove('is-hidden');
-					return;
-				}
+  <script src="../js/generate-details.js"></script>
+  <script>
+    // Read key from query and populate template
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const key = params.get('key');
+      if (!key) {
+        document.getElementById('not-found').classList.remove('is-hidden');
+        return;
+      }
 
-				// Populate fields
-				document.getElementById('movie-root').classList.remove('is-hidden');
-				document.getElementById('movie-poster').src = movie.poster || '../assets/images/images-w1400.jpg';
-				document.getElementById('movie-title').textContent = movie.title || 'Untitled';
-				document.getElementById('movie-sub').textContent = (movie.year ? movie.year + ' • ' : '') + (movie.duration ? movie.duration + ' min' : '');
-				document.getElementById('movie-rating').textContent = movie.rating ? '⭐ ' + movie.rating : '';
-				document.getElementById('movie-description').textContent = movie.description || '';
+      const raw = sessionStorage.getItem(key);
+      if (!raw) {
+        document.getElementById('not-found').classList.remove('is-hidden');
+        return;
+      }
 
-				// genres
-				const genresRoot = document.getElementById('movie-genres');
-				genresRoot.innerHTML = '';
-				if (Array.isArray(movie.genres)) {
-					movie.genres.forEach((g) => {
-						const span = document.createElement('span');
-						span.className = 'tag is-light';
-						span.textContent = g;
-						genresRoot.appendChild(span);
-					});
-				}
+      let movie;
+      try {
+        movie = JSON.parse(raw);
+      } catch (e) {
+        document.getElementById('not-found').classList.remove('is-hidden');
+        return;
+      }
 
-				// poster actions (download/trailer/share)
-				const posterActions = document.getElementById('poster-actions');
-				posterActions.innerHTML = '';
-				const btnDownload = document.createElement('a');
-				btnDownload.className = 'button is-light';
-				btnDownload.textContent = 'Download';
-				btnDownload.href = movie.download || '#';
-				btnDownload.setAttribute('download', '');
-				posterActions.appendChild(btnDownload);
+      // Populate fields
+      document.getElementById('movie-root').classList.remove('is-hidden');
+      document.getElementById('movie-poster').src = movie.poster || '';
+      document.getElementById('movie-title').textContent = movie.title || 'Untitled';
+      document.getElementById('movie-sub').textContent = (movie.year ? movie.year + ' • ' : '') + (movie.duration ? movie.duration + ' min' : '');
+      document.getElementById('movie-rating').textContent = movie.rating ? '⭐ ' + movie.rating : '';
+      document.getElementById('movie-description').textContent = movie.description || '';
 
-				const btnTrailer = document.createElement('a');
-				btnTrailer.className = 'button is-primary';
-				btnTrailer.textContent = 'Watch Trailer';
-				btnTrailer.href = movie.trailer || '#';
-				posterActions.appendChild(btnTrailer);
+      // genres
+      const genresRoot = document.getElementById('movie-genres');
+      genresRoot.innerHTML = '';
+      if (Array.isArray(movie.genres)) {
+        movie.genres.forEach((g) => {
+          const span = document.createElement('span');
+          span.className = 'tag is-light';
+          span.textContent = g;
+          genresRoot.appendChild(span);
+        });
+      }
 
-				// downloads quick list
-				const downloadsRoot = document.getElementById('movie-downloads');
-				downloadsRoot.innerHTML = '';
-				if (Array.isArray(movie.downloads) && movie.downloads.length) {
-					const dl = document.createElement('div');
-					dl.className = 'box';
-					movie.downloads.forEach(d => {
-						const a = document.createElement('a');
-						a.href = d.url || '#';
-						a.className = 'button is-small is-fullwidth is-light';
-						a.textContent = (d.label || d.quality || 'Download');
-						dl.appendChild(a);
-					});
-					downloadsRoot.appendChild(dl);
-				}
+      // poster actions (download/trailer/share)
+      const posterActions = document.getElementById('poster-actions');
+      posterActions.innerHTML = '';
+      const btnDownload = document.createElement('a');
+      btnDownload.className = 'button is-light';
+      btnDownload.textContent = 'Download';
+      btnDownload.href = movie.download || '#';
+      btnDownload.setAttribute('download', '');
+      posterActions.appendChild(btnDownload);
 
-				// similar/recommended
-				const similarRoot = document.getElementById('similar-list');
-				similarRoot.innerHTML = '';
-				if (Array.isArray(movie.similar)) {
-					movie.similar.forEach(s => {
-						const col = document.createElement('div');
-						col.className = 'column is-half';
-						const card = document.createElement('div');
-						card.className = 'card';
-						const imgWrap = document.createElement('div');
-						imgWrap.className = 'card-image';
-						const fig = document.createElement('figure');
-						fig.className = 'image is-4by3';
-						const im = document.createElement('img');
-						im.src = s.poster || '../assets/images/images-w1400.jpg';
-						im.alt = s.title || 'poster';
-						fig.appendChild(im);
-						imgWrap.appendChild(fig);
-						const content = document.createElement('div');
-						content.className = 'card-content';
-						const p = document.createElement('p');
-						p.className = 'title is-6';
-						p.textContent = s.title || '';
-						content.appendChild(p);
-						card.appendChild(imgWrap);
-						card.appendChild(content);
-						card.addEventListener('click', () => {
-							// open similar film using generateDetails if available
-							if (window.generateDetails) window.generateDetails(s);
-						});
-						col.appendChild(card);
-						similarRoot.appendChild(col);
-					});
-				}
+      const btnTrailer = document.createElement('a');
+      btnTrailer.className = 'button is-primary';
+      btnTrailer.textContent = 'Watch Trailer';
+      btnTrailer.href = movie.trailer || '#';
+      posterActions.appendChild(btnTrailer);
 
-				// middle section: summary & cast
-				document.getElementById('movie-summary').textContent = movie.summary || movie.description || '';
-				const castRoot = document.getElementById('movie-cast');
-				castRoot.innerHTML = '';
-				if (Array.isArray(movie.cast)) {
-					movie.cast.forEach(c => {
-						const t = document.createElement('span');
-						t.className = 'tag is-light';
-						t.textContent = c;
-						castRoot.appendChild(t);
-					});
-				}
+      // downloads quick list
+      const downloadsRoot = document.getElementById('movie-downloads');
+      downloadsRoot.innerHTML = '';
+      if (Array.isArray(movie.downloads) && movie.downloads.length) {
+        const dl = document.createElement('div');
+        dl.className = 'box';
+        movie.downloads.forEach(d => {
+          const a = document.createElement('a');
+          a.href = d.url || '#';
+          a.className = 'button is-small is-fullwidth is-light';
+          a.textContent = (d.label || d.quality || 'Download');
+          dl.appendChild(a);
+        });
+        downloadsRoot.appendChild(dl);
+      }
 
-				// details list (languages, duration, producers...)
-				const detailsList = document.getElementById('movie-details-list');
-				detailsList.innerHTML = '';
-				const details = [];
-				if (movie.languages) details.push('Languages: ' + (Array.isArray(movie.languages) ? movie.languages.join(', ') : movie.languages));
-				if (movie.director) details.push('Director: ' + movie.director);
-				if (movie.producer) details.push('Producer: ' + movie.producer);
-				if (movie.budget) details.push('Budget: ' + movie.budget);
-				if (movie.boxOffice) details.push('Box office: ' + movie.boxOffice);
-				details.forEach(d => { const li = document.createElement('li'); li.textContent = d; detailsList.appendChild(li); });
+      // similar/recommended
+      const similarRoot = document.getElementById('similar-list');
+      similarRoot.innerHTML = '';
+      if (Array.isArray(movie.similar)) {
+        movie.similar.forEach(s => {
+          const col = document.createElement('div');
+          col.className = 'column is-half';
+          const card = document.createElement('div');
+          card.className = 'card';
+          const imgWrap = document.createElement('div');
+          imgWrap.className = 'card-image';
+          const fig = document.createElement('figure');
+          fig.className = 'image is-4by3';
+          const im = document.createElement('img');
+          im.src = s.poster || '';
+          im.alt = s.title || 'poster';
+          fig.appendChild(im);
+          imgWrap.appendChild(fig);
+          const content = document.createElement('div');
+          content.className = 'card-content';
+          const p = document.createElement('p');
+          p.className = 'title is-6';
+          p.textContent = s.title || '';
+          content.appendChild(p);
+          card.appendChild(imgWrap);
+          card.appendChild(content);
+          card.addEventListener('click', () => {
+            // open similar film using generateDetails if available
+            if (window.generateDetails) window.generateDetails(s);
+          });
+          col.appendChild(card);
+          similarRoot.appendChild(col);
+        });
+      }
 
-				// scenes
-				const scenesRoot = document.getElementById('movie-scenes');
-				scenesRoot.innerHTML = '';
-				if (Array.isArray(movie.scenes)) {
-					movie.scenes.forEach(sc => {
-						const div = document.createElement('div');
-						div.className = 'scene';
-						div.textContent = sc;
-						scenesRoot.appendChild(div);
-					});
-				}
+      // middle section: summary & cast
+      document.getElementById('movie-summary').textContent = movie.summary || movie.description || '';
+      const castRoot = document.getElementById('movie-cast');
+      castRoot.innerHTML = '';
+      if (Array.isArray(movie.cast)) {
+        movie.cast.forEach(c => {
+          const t = document.createElement('span');
+          t.className = 'tag is-light';
+          t.textContent = c;
+          castRoot.appendChild(t);
+        });
+      }
 
-				// comments: simple in-session comment storage keyed by key+'_comments'
-				const commentKey = key + '_comments';
-				const commentInput = document.getElementById('comment-input');
-				const commentPost = document.getElementById('comment-post');
-				const commentList = document.getElementById('comment-list');
+      // details list (languages, duration, producers...)
+      const detailsList = document.getElementById('movie-details-list');
+      detailsList.innerHTML = '';
+      const details = [];
+      if (movie.languages) details.push('Languages: ' + (Array.isArray(movie.languages) ? movie.languages.join(', ') : movie.languages));
+      if (movie.director) details.push('Director: ' + movie.director);
+      if (movie.producer) details.push('Producer: ' + movie.producer);
+      if (movie.budget) details.push('Budget: ' + movie.budget);
+      if (movie.boxOffice) details.push('Box office: ' + movie.boxOffice);
+      details.forEach(d => { const li = document.createElement('li'); li.textContent = d; detailsList.appendChild(li); });
 
-				function loadComments() {
-					commentList.innerHTML = '';
-					let arr = [];
-					try { arr = JSON.parse(sessionStorage.getItem(commentKey) || '[]'); } catch (e) { arr = []; }
-					arr.forEach(c => {
-						const d = document.createElement('div');
-						d.className = 'comment';
-						const m = document.createElement('div');
-						m.className = 'meta';
-						m.textContent = (new Date(c.t)).toLocaleString();
-						const b = document.createElement('div');
-						b.textContent = c.text;
-						d.appendChild(m);
-						d.appendChild(b);
-						commentList.appendChild(d);
-					});
-				}
+      // scenes
+      const scenesRoot = document.getElementById('movie-scenes');
+      scenesRoot.innerHTML = '';
+      if (Array.isArray(movie.scenes)) {
+        movie.scenes.forEach(sc => {
+          const div = document.createElement('div');
+          div.className = 'scene';
+          div.textContent = sc;
+          scenesRoot.appendChild(div);
+        });
+      }
 
-				commentPost.addEventListener('click', () => {
-					const txt = commentInput.value && commentInput.value.trim();
-					if (!txt) return;
-					let arr = [];
-					try { arr = JSON.parse(sessionStorage.getItem(commentKey) || '[]'); } catch (e) { arr = []; }
-					arr.unshift({ t: Date.now(), text: txt });
-					sessionStorage.setItem(commentKey, JSON.stringify(arr));
-					commentInput.value = '';
-					loadComments();
-				});
+      // comments: simple in-session comment storage keyed by key+'_comments'
+      const commentKey = key + '_comments';
+      const commentInput = document.getElementById('comment-input');
+      const commentPost = document.getElementById('comment-post');
+      const commentList = document.getElementById('comment-list');
 
-				loadComments();
-			})();
-		</script>
-	</body>
+      function loadComments() {
+        commentList.innerHTML = '';
+        let arr = [];
+        try { arr = JSON.parse(sessionStorage.getItem(commentKey) || '[]'); } catch (e) { arr = []; }
+        arr.forEach(c => {
+          const d = document.createElement('div');
+          d.className = 'comment';
+          const m = document.createElement('div');
+          m.className = 'meta';
+          m.textContent = (new Date(c.t)).toLocaleString();
+          const b = document.createElement('div');
+          b.textContent = c.text;
+          d.appendChild(m);
+          d.appendChild(b);
+          commentList.appendChild(d);
+        });
+      }
+
+      commentPost.addEventListener('click', () => {
+        const txt = commentInput.value && commentInput.value.trim();
+        if (!txt) return;
+        let arr = [];
+        try { arr = JSON.parse(sessionStorage.getItem(commentKey) || '[]'); } catch (e) { arr = []; }
+        arr.unshift({ t: Date.now(), text: txt });
+        sessionStorage.setItem(commentKey, JSON.stringify(arr));
+        commentInput.value = '';
+        loadComments();
+      });
+
+      loadComments();
+    })();
+  </script>
+</body>
+
 </html>

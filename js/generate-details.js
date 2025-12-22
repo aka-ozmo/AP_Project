@@ -1,27 +1,29 @@
-/* Utilities to generate a details page from a template using sessionStorage.
-	 - renderDemo(containerId, movies): renders a clickable gallery of movie cards
-	 - generateDetails(movie): stores movie in sessionStorage and navigates to template with key
-*/
+/**
+ * This script provides utility functions for creating a movie gallery and
+ * navigating to a details page. It uses sessionStorage to pass movie data
+ * between the homepage and the details template.
+ */
 
 function generateKey(movie) {
 	return 'movie_' + (movie.id || movie.title || Date.now()) + '_' + Math.random().toString(36).slice(2, 8);
 }
 
 function generateDetails(movie) {
+	// Generate a unique key for the movie object to store in sessionStorage.
 	const key = generateKey(movie);
 	try {
 		sessionStorage.setItem(key, JSON.stringify(movie));
 	} catch (e) {
 		console.error('Failed to store movie in sessionStorage', e);
-		// fallback: open template without data
 	}
-	// Navigate to template with the key in query string
+	// Navigate to the details template, passing the key in the URL.
 	const url = new URL(window.location.href);
-	// If current script is loaded from html page, compute relative path
+	// Compute relative path to the details page from the current page.
 	const base = window.location.pathname.replace(/[^/]*$/, '');
 	window.location.href = base + 'details-templete.html?key=' + encodeURIComponent(key);
 }
 
+/** Renders a gallery of movie cards into a specified container. */
 function renderDemo(containerId, movies) {
 	const root = document.getElementById(containerId);
 	if (!root) return;
@@ -73,6 +75,6 @@ function renderDemo(containerId, movies) {
 	});
 }
 
-// Expose functions for debugging or other pages
+// Expose functions to the global window object for use in inline scripts.
 window.generateDetails = generateDetails;
 window.renderDemo = renderDemo;

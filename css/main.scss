@@ -1,0 +1,146 @@
+// Main Sass file for Torrentflix - Defines the custom dark theme.
+
+// --- 1. Brand Colors ---
+$primary: #4f46e5; // Indigo 600
+$info: #38bdf8; // Sky 400
+
+// --- 2. Dark Theme Overrides ---
+$scheme-main: #111827; // Gray 900
+$scheme-main-bis: #1f2937; // Gray 800
+$scheme-main-ter: #374151; // Gray 700
+$body-background-color: $scheme-main;
+$text: #d1d5db; // Gray 300
+$text-strong: #ffffff;
+$title-color: $text-strong;
+$subtitle-color: $info;
+$footer-background-color: $scheme-main-bis;
+$text-weak: #9ca3af; // Gray 400, for less prominent text
+
+// --- 3. Import Bulma Framework ---
+@use "bulma/bulma";
+
+// --- 4. Custom Component Styles ---
+
+/* Custom class for the dark navbar/header */
+.custom-navbar-bg {
+    border-bottom: 2px solid $scheme-main-ter;
+}
+
+/* Custom class for the dark banner */
+.custom-banner-bg {
+    background-color: $scheme-main-bis !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom class for the title section separator */
+.custom-section-title {
+    color: $text-strong;
+    border-bottom: 1px solid $scheme-main-ter;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.custom-section-title .icon {
+    margin-right: 0.5rem;
+    color: $primary;
+}
+
+    /* --- Gallery & Details Page Styles (from templete-styles.css) --- */
+
+    /* Gallery Cards */
+    #gallery .card {
+        cursor: pointer;
+        transition: transform 120ms ease, box-shadow 120ms ease;
+        background-color: $scheme-main-bis; /* Use dark card background */
+}
+    #gallery .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+    .poster-image {
+      object-fit: cover;
+      height: 320px;
+      width: 100%;
+}
+    @media (max-width: 768px) {
+      .poster-image {
+        height: 260px;
+      }
+}
+
+    /* Details Page Tweaks */
+    #movie-root img {
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+    #top-section {
+      align-items: flex-start;
+}
+    .poster-wrap img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      object-fit: cover;
+}
+    #poster-actions .button {
+      width: 100%;
+    }
+    #similar-list .card {
+      cursor: pointer;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+    #similar-list .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    #similar-list .card .image {
+      height: 140px;
+      overflow: hidden;
+    }
+    #similar-list .card img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    #movie-details-list {
+      list-style:none;
+      padding-left:0;
+    }
+    #movie-details-list li {
+      margin-bottom:0.5rem;
+    }
+    #movie-cast .tag {
+      margin:0.25rem 0.25rem 0 0;
+    }
+    #comment-list .comment {
+      border-bottom:1px solid $scheme-main-ter; /* Dark theme border */
+      padding:0.75rem 0;
+    }
+    #comment-list .comment .meta {
+      font-size:0.85rem;
+      color: $text-weak; /* Dark theme text */
+      margin-bottom:0.35rem;
+    }
+    #movie-scenes .scene {
+      margin-bottom:0.5rem;
+      padding:0.5rem;
+      background: $scheme-main-bis; /* Dark theme background */
+      border-radius:4px;
+    }
+    @media (max-width: 992px) {
+      #top-section { flex-direction: column; }
+      #col-poster { order: 1; }
+      #col-details { order: 2; }
+      #col-similar { order: 3; }
+      #similar-list .card .image { height: 120px; }
+    }
+    @media (max-width: 640px) {
+      .poster-wrap img { height: 320px; object-fit: cover; }
+      #poster-actions .button { font-size:0.9rem; }
+    }
+    .is-hidden {
+      display: none !important;
+    }
