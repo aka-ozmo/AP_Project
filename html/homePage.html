@@ -1,43 +1,94 @@
 <!DOCTYPE html>
-
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torrentflix - HD Movie Listings</title>
+    <!-- Load Bulma CSS (Replaced Tailwind) -->
+    <link rel="stylesheet" href="../css/bulma.min.css">
+   <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"> -->
+    <!-- Load Lucide Icons for aesthetic -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Page</title>
-        <link rel="stylesheet" href="styles.css">
-        <script src="script.js" defer></script>
-    </head>
+    <!-- START OF "STYLES.CSS" CONTENT (Custom Dark Theme & Card Effects for Bulma) -->
 
+    <!--link rel="stylesheet" type="text/css" href="AP_PROJECT/node_modules/bulma/css/bulma.main.css" -->
+    <link href="/node_modules/bulma/css/bulma.min.css" type="text/css" rel="stylesheet">
 
-    <body css="frontend.sass">
+</head>
+<body>
 
-        <header>
-            <h1>Welcome to the Home Page</h1>
-            <h2>Your gateway to information</h2>
-            <div class="logo">
-                <img src="logo.png" alt="Website Logo">
-            <nav>
-                <ul>
-                    <li><a href="homePage.html">Home</a></li>
-                    <li><a href="aboutPage.html">About</a></li>
-                    <li><a href="contactPage.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <!-- Header & Navigation (Bulma Navbar) -->
+    <nav class="navbar custom-navbar-bg is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="container is-max-widescreen">
+            <div class="navbar-brand">
+                <a href="#" class="navbar-item is-size-3 has-text-weight-bold has-text-white">
+                    <span class="has-text-info">Torrent</span><span class="has-text-grey-light">flix</span>
+                </a>
+            </div>
 
-        <main>
-            <section>
-                <h2>Main Content</h2>
-                <p>This is the main content area of the home page.</p>
-            </section>
-        </main>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end is-align-items-center">
+                    <!-- Search Bar -->
+                    <div class="navbar-item is-expanded">
+                        <div class="field has-addons">
+                            <div class="control has-icons-left is-expanded">
+                                <input
+                                    type="search"
+                                    id="movie-search"
+                                    placeholder="Search for movies, actors, or genres..."
+                                    class="input is-rounded has-background-grey-darker has-text-light"
+                                >
+                                <span class="icon is-left">
+                                    <i data-lucide="search" class="w-4 h-4 has-text-grey-light"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
 
-        <footer>
-            <p>&copy; 2024 My Website</p>
-        </footer>
+                    <!-- Menu Links -->
+                    <a href="#" class="navbar-item has-text-grey-light">Trending</a>
+                    <a href="#" class="navbar-item has-text-grey-light">4K</a>
+                    <a href="#" class="navbar-item has-text-grey-light">Top Rated</a>
+                    <a href="#" class="navbar-item has-text-grey-light">Log In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    </body>
+    <!-- Main Content Area -->
+    <div class="container is-max-widescreen main-container pt-6" style="margin-top: 52px;">
 
+        <!-- Introduction Banner -->
+        <div class="section pt-6 pb-6 mt-4 mb-5 custom-banner-bg has-text-centered">
+            <h1 class="title is-3 has-text-white mb-2">Download YIFY Movies in HD</h1>
+            <p class="subtitle is-5 has-text-info">Browse the largest catalog of high-quality, lightweight movie downloads.</p>
+        </div>
+
+        <!-- Movie Listing Grid -->
+        <section class="section pt-0">
+            <h2 class="title is-4 custom-section-title">
+                <span class="icon"><i data-lucide="monitor" class="w-6 h-6"></i></span>
+                Latest Releases
+            </h2>
+
+            <!-- Bulma Columns Grid -->
+            <div id="movie-grid" class="columns is-multiline is-mobile">
+                <!-- Movie cards will be inserted here by JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer custom-navbar-bg p-4 has-text-centered">
+        <p class="has-text-grey-light is-size-7">
+            &copy; 2024 Torrentflix Clone. All rights reserved. |
+            <a href="#" class="has-text-info">Terms</a> |
+            <a href="#" class="has-text-info">Contact</a>
+        </p>
+    </footer>
+
+    <script src="/html/index.js"></script>
+
+</body>
 </html>
