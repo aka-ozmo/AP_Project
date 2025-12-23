@@ -1,3 +1,9 @@
+<!--
+  Page: Search Results
+  Description: This page displays the search results filtered by the query parameter in the URL.
+  It relies on movieSearch.js to parse the URL and filter the data, and generate-details.js to render the movie cards.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +69,7 @@
 
     <!-- Film Gallery -->
     <section class="section">
-      <h1 class="title">Latest Releases</h1>
+      <h1 class="title">Search Results</h1>
       <p class="subtitle">Click a poster to view details.</p>
       <div id="gallery" class="columns is-multiline"></div>
     </section>
@@ -79,7 +85,6 @@
   </footer>
 
   <script src="../js/generate-details.js"></script>
-  <script type="module" src="../js/homepage.js"></script>
   <script type="module" src="../js/movieSearch.js"></script>
 
 
