@@ -14,7 +14,7 @@ topRatedMovies.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
 // Render the gallery using the helper from generate-details.js
 // This will run once the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.renderDemo) {
-        renderDemo('gallery', topRatedMovies);
+    if (window.renderMovies) {
+        renderMovies('gallery', topRatedMovies);
     }
 });

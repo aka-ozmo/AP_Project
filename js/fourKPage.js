@@ -13,7 +13,7 @@ const fourKMovies = movies.filter(movie =>
 // Render the gallery using the helper from generate-details.js
 // This will run once the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.renderDemo) {
-        renderDemo('gallery', fourKMovies);
+    if (window.renderMovies) {
+        renderMovies('gallery', fourKMovies);
     }
 });

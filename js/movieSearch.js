@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
       movie.cast.some((actor) => actor.toLowerCase().includes(searchString)) ||
       movie.genres.some((genre) => genre.toLowerCase().includes(searchString))
     );
-    if (window.renderDemo) {
-      renderDemo("gallery", filteredMovies);
+    if (window.renderMovies) {
+      renderMovies("gallery", filteredMovies);
     }
   }
 });

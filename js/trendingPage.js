@@ -16,7 +16,7 @@ movies.forEach(element => {
 // Render demo gallery using helper from generate-details.js
 // This will run once the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.renderDemo) {
-        renderDemo('gallery', trendingMovies);
+    if (window.renderMovies) {
+        renderMovies('gallery', trendingMovies);
     }
 });
