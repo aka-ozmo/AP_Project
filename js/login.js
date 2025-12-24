@@ -3,8 +3,16 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebas
         import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Global Variables
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'movie-app-demo';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const appId = typeof __app_id !== '1:625011942136:web:9af0d12c8b7fe3886c910d' ? __app_id : 'movie-app-demo';
+        const firebaseConfig = {
+            apiKey: "AIzaSyA98YDCtozjqg-rrcGjQObXd5NEVoF3hLc",
+            authDomain: "webflix-ap1-project.firebaseapp.com",
+            projectId: "webflix-ap1-project",
+            storageBucket: "webflix-ap1-project.appspot.com",
+            messagingSenderId: "625011942136",
+            appId: "1:625011942136:web:9af0d12c8b7fe3886c910d",
+            measurementId: "G-PBFXXTSYMF"
+        };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
@@ -186,4 +194,47 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebas
             }
         };
 
+        // Get a reference to the Realtime Database service
+const database = firebase.database();
+
+// Write data
+function writeUserData(userId, name, email, imageUrl) {
+  database.ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
+// Read data (listen for changes)
+const starCountRef = database.ref('posts/123/starCount');
+starCountRef.on('value', (snapshot) => {
+  const data = snapshot.val();
+  console.log("Star count: " + data);
+});
+
+/*
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyA98YDCtozjqg-rrcGjQObXd5NEVoF3hLc",
+  authDomain: "webflix-ap1-project.firebaseapp.com",
+  projectId: "webflix-ap1-project",
+  storageBucket: "webflix-ap1-project.firebasestorage.app",
+  messagingSenderId: "625011942136",
+  appId: "1:625011942136:web:9af0d12c8b7fe3886c910d",
+  measurementId: "G-PBFXXTSYMF"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+*/
         lucide.createIcons();
