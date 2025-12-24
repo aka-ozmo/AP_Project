@@ -1,12 +1,15 @@
 {
   "scripts": {
     "start": "http-server -p 8080 -c-1",
-    "sass": "sass --watch css/main.scss:css/main.css --load-path=node_modules"
+    "sass": "sass --watch css/main.scss:css/main.css --load-path=node_modules",
+    "dev": "concurrently \"npm run sass\" \"npm start\"",
+    "build": "sass css/main.scss:css/main.css --load-path=node_modules"
   },
   "dependencies": {
     "bulma": "^1.0.4"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "http-server": "^14.1.1",
     "sass": "^1.77.0"
   }
