@@ -186,4 +186,24 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebas
             }
         };
 
+        // Get a reference to the Realtime Database service
+const database = firebase.database();
+
+// Write data
+function writeUserData(userId, name, email, imageUrl) {
+  database.ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
+// Read data (listen for changes)
+const starCountRef = database.ref('posts/123/starCount');
+starCountRef.on('value', (snapshot) => {
+  const data = snapshot.val();
+  console.log("Star count: " + data);
+});
+
+
         lucide.createIcons();
