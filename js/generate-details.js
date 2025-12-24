@@ -24,7 +24,7 @@ function generateDetails(movie) {
 }
 
 /** Renders a gallery of movie cards into a specified container. */
-function renderDemo(containerId, movies) {
+function renderMovies(containerId, movies) {
 	const root = document.getElementById(containerId);
 	if (!root) return;
 	root.innerHTML = '';
@@ -77,4 +77,4 @@ function renderDemo(containerId, movies) {
 
 // Expose functions to the global window object for use in inline scripts.
 window.generateDetails = generateDetails;
-window.renderDemo = renderDemo;
+window.renderMovies = renderMovies;

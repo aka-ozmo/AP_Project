@@ -1,10 +1,12 @@
-// Main Sass file for Torrentflix - Defines the custom dark theme.
+// Main Sass file for Webflix - Defines the custom dark theme.
 
 // --- 1. Brand Colors ---
+// These are the primary brand colors used throughout the site.
 $primary: #4f46e5; // Indigo 600
 $info: #38bdf8; // Sky 400
 
 // --- 2. Dark Theme Overrides ---
+// These variables override Bulma's defaults to create the dark theme.
 $scheme-main: #111827; // Gray 900
 $scheme-main-bis: #1f2937; // Gray 800
 $scheme-main-ter: #374151; // Gray 700
@@ -20,6 +22,7 @@ $text-weak: #9ca3af; // Gray 400, for less prominent text
 @use "bulma/bulma";
 
 // --- 4. Custom Component Styles ---
+// These are custom styles for components used across multiple pages.
 
 /* Custom class for the dark navbar/header */
 .custom-navbar-bg {
@@ -48,99 +51,247 @@ $text-weak: #9ca3af; // Gray 400, for less prominent text
     color: $primary;
 }
 
-    /* --- Gallery & Details Page Styles (from templete-styles.css) --- */
+/* Gallery Cards on main pages */
+#gallery .card {
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+    background-color: $scheme-main-bis; /* Use dark card background */
+}
 
-    /* Gallery Cards */
-    #gallery .card {
-        cursor: pointer;
-        transition: transform 120ms ease, box-shadow 120ms ease;
-        background-color: $scheme-main-bis; /* Use dark card background */
+#gallery .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
-    #gallery .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+.poster-image {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
 }
+
+@media (max-width: 768px) {
     .poster-image {
-      object-fit: cover;
-      height: 320px;
-      width: 100%;
-}
-    @media (max-width: 768px) {
-      .poster-image {
         height: 260px;
-      }
+    }
 }
 
-    /* Details Page Tweaks */
-    #movie-root img {
-      border-radius: 6px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+// --- 5. Details Page Specific Styles ---
+// Styles for the redesigned details-templete.html page.
+.details-page {
+  background-color: #0f172a; // A slightly different dark blue from the main theme
+  color: #cbd5e1; // slate-300
+  min-height: 100vh;
+
+  .navbar {
+    background-color: transparent;
+    border-bottom: 1px solid $scheme-main-bis;
+  }
+
+  .box {
+    background-color: $scheme-main-bis;
+    border: 1px solid $scheme-main-ter;
+    color: $text;
+  }
+
+  .title {
+    color: $text-strong !important;
+  }
+
+  .subtitle {
+    color: $text-weak !important;
+  }
+
+  .card {
+    background-color: $scheme-main-bis;
+    border: 1px solid $scheme-main-ter;
+    color: $text;
+    height: 100%;
+  }
+
+  .card-content .title {
+    color: $text-strong !important;
+  }
+
+  .notification {
+    background-color: $scheme-main-bis;
+    border: 1px solid $scheme-main-ter;
+  }
+
+  .tag.is-dark {
+    background-color: $scheme-main-ter;
+    color: $text-strong;
+  }
+
+  .input,
+  .textarea {
+    background-color: $scheme-main;
+    border-color: $scheme-main-ter;
+    color: $text-strong;
+  }
+
+  .input::placeholder,
+  .textarea::placeholder {
+    color: #64748b; // slate-500
+  }
+
+  .input:focus,
+  .textarea:focus {
+    border-color: $info; // Using info color for focus
+  }
+
+  .scene-tag {
+    background-color: $scheme-main-ter;
+    color: $text-weak;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .comment {
+    border-bottom: 1px solid $scheme-main-ter;
+    padding: 1rem 0;
+  }
 }
-    #top-section {
-      align-items: flex-start;
+
+// --- 6. Light Mode Overrides ---
+// These styles ensure the site looks good when the user's system is in light mode.
+// We override the hardcoded dark values with light-appropriate ones.
+@media (prefers-color-scheme: light) {
+  :root {
+    --bulma-body-background-color: #ffffff;
+    --bulma-text: #374151;
+    --bulma-title-color: #111827;
+    --bulma-subtitle-color: #4b5563;
+    --bulma-scheme-main: #ffffff;
+    --bulma-scheme-main-bis: #f3f4f6;
+    --bulma-scheme-main-ter: #e5e7eb;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #374151;
+  }
+
+  // Invert text utility classes for light mode so we don't have to change HTML
+  .has-text-white {
+    color: #111827 !important; // gray-900
+  }
+
+  .has-text-grey-light {
+    color: #6b7280 !important; // gray-500
+  }
+
+  .has-text-grey-lighter {
+    color: #4b5563 !important; // gray-600
+  }
+
+  // Search bar overrides for light mode
+  .has-background-grey-darker {
+    background-color: #f3f4f6 !important;
+  }
+  .has-text-light {
+    color: #374151 !important;
+  }
+  .input.has-background-grey-darker::placeholder {
+    color: #6b7280 !important;
+  }
+
+  // Navbar
+  .custom-navbar-bg {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e5e7eb; // gray-200
+
+    .navbar-item {
+        color: #374151; // gray-700
+
+        &.has-text-white {
+            color: #111827 !important;
+        }
+
+        &:hover {
+            background-color: #f3f4f6; // gray-100
+            color: #111827;
+        }
+    }
+  }
+
+  // Banner
+  .custom-banner-bg {
+    background-color: #f3f4f6 !important;
+    border: 1px solid #e5e7eb;
+    box-shadow: none;
+
+    .title.has-text-white {
+        color: #111827 !important;
+    }
+  }
+
+  // Section Title
+  .custom-section-title {
+    color: #111827;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  // Cards
+  #gallery .card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    color: #374151;
+
+    &:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  // Details Page Light Mode
+  .details-page {
+    background-color: #f9fafb; // gray-50
+    color: #374151; // gray-700
+
+    .title {
+      color: #111827 !important;
+    }
+
+    .navbar {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .box, .card {
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+        color: #374151;
+    }
+    .card .card-content .title {
+      color: #111827 !important;
+    }
+
+    .notification {
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+    }
+
+    .tag.is-dark {
+        background-color: #e5e7eb;
+        color: #111827;
+    }
+
+    .input, .textarea {
+        background-color: #ffffff;
+        border-color: #d1d5db;
+        color: #111827;
+        &::placeholder { color: #9ca3af; }
+    }
+
+    .scene-tag {
+        background-color: #e5e7eb;
+        color: #374151;
+    }
+
+    .comment {
+        border-bottom: 1px solid #e5e7eb;
+    }
+  }
 }
-    .poster-wrap img {
-      width: 100%;
-      height: auto;
-      border-radius: 6px;
-      object-fit: cover;
-}
-    #poster-actions .button {
-      width: 100%;
-    }
-    #similar-list .card {
-      cursor: pointer;
-      transition: transform 120ms ease, box-shadow 120ms ease;
-    }
-    #similar-list .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    }
-    #similar-list .card .image {
-      height: 140px;
-      overflow: hidden;
-    }
-    #similar-list .card img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-    #movie-details-list {
-      list-style:none;
-      padding-left:0;
-    }
-    #movie-details-list li {
-      margin-bottom:0.5rem;
-    }
-    #movie-cast .tag {
-      margin:0.25rem 0.25rem 0 0;
-    }
-    #comment-list .comment {
-      border-bottom:1px solid $scheme-main-ter; /* Dark theme border */
-      padding:0.75rem 0;
-    }
-    #comment-list .comment .meta {
-      font-size:0.85rem;
-      color: $text-weak; /* Dark theme text */
-      margin-bottom:0.35rem;
-    }
-    #movie-scenes .scene {
-      margin-bottom:0.5rem;
-      padding:0.5rem;
-      background: $scheme-main-bis; /* Dark theme background */
-      border-radius:4px;
-    }
-    @media (max-width: 992px) {
-      #top-section { flex-direction: column; }
-      #col-poster { order: 1; }
-      #col-details { order: 2; }
-      #col-similar { order: 3; }
-      #similar-list .card .image { height: 120px; }
-    }
-    @media (max-width: 640px) {
-      .poster-wrap img { height: 320px; object-fit: cover; }
-      #poster-actions .button { font-size:0.9rem; }
-    }
-    .is-hidden {
-      display: none !important;
-    }

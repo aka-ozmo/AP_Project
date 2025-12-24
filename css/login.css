@@ -1,73 +1,169 @@
  :root {
-            --primary-color: #4f46e5;
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
-            --input-bg: #334155;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-bg);
-            color: #f1f5f9;
-            min-height: 100vh;
-        }
-        /* Auth Page Styles */
-        #auth-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .auth-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        /* Main App Styles */
-        .custom-navbar { background-color: #1e293b !important; border-bottom: 1px solid #334155; }
-        .movie-card-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s;
-            display: block;
-            aspect-ratio: 2/3;
-        }
-        .movie-card-container:hover { transform: translateY(-4px); }
-        .movie-poster { width: 100%; height: 100%; object-fit: cover; }
-        .card-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            opacity: 0;
-            transition: opacity 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-        .movie-card-container:hover .card-overlay { opacity: 1; }
-        .input.is-dark {
-            background-color: var(--input-bg);
-            border-color: #475569;
-            color: white;
-        }
-        .input.is-dark::placeholder { color: #94a3b8; }
-        .button.is-indigo { background-color: var(--primary-color); color: white; border: none; }
-        .button.is-indigo:hover { background-color: #4338ca; }
-        
-        .hidden { display: none !important; }
-        #app-content { display: none; } /* Hidden until auth */
-        
-        .forgot-password-link {
-            font-size: 0.75rem;
-            display: block;
-            margin-top: 0.5rem;
-            text-align: right;
-        }
+   --primary-color: #4f46e5;
+   --dark-bg: #0f172a;
+   --card-bg: #1e293b;
+   --input-bg: #334155;
+ }
+
+ body {
+   font-family: 'Inter', sans-serif;
+   background-color: var(--dark-bg);
+   color: #f1f5f9;
+   min-height: 100vh;
+ }
+
+ /* Auth Page Styles */
+ #auth-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   padding: 20px;
+ }
+
+ .auth-card {
+   background: var(--card-bg);
+   padding: 2.5rem;
+   border-radius: 12px;
+   width: 100%;
+   max-width: 450px;
+   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+ }
+
+ /* Main App Styles */
+ .custom-navbar {
+   background-color: #1e293b !important;
+   border-bottom: 1px solid #334155;
+ }
+
+ .movie-card-container {
+   position: relative;
+   overflow: hidden;
+   border-radius: 8px;
+   cursor: pointer;
+   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+   transition: transform 0.2s;
+   display: block;
+   aspect-ratio: 2/3;
+ }
+
+ .movie-card-container:hover {
+   transform: translateY(-4px);
+ }
+
+ .movie-poster {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+
+ .card-overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(15, 23, 42, 0.9);
+   opacity: 0;
+   transition: opacity 0.3s;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 1rem;
+ }
+
+ .movie-card-container:hover .card-overlay {
+   opacity: 1;
+ }
+
+ .input.is-dark {
+   background-color: var(--input-bg);
+   border-color: #475569;
+   color: white;
+ }
+
+ .input.is-dark::placeholder {
+   color: #94a3b8;
+ }
+
+ .button.is-indigo {
+   background-color: var(--primary-color);
+   color: white;
+   border: none;
+ }
+
+ .button.is-indigo:hover {
+   background-color: #4338ca;
+ }
+
+ .hidden {
+   display: none !important;
+ }
+
+ #app-content {
+   display: none;
+ }
+
+ /* Hidden until auth */
+
+ .forgot-password-link {
+   font-size: 0.75rem;
+   display: block;
+   margin-top: 0.5rem;
+   text-align: right;
+ }
+
+ /* Light Mode Overrides */
+ @media (prefers-color-scheme: light) {
+   :root {
+     --dark-bg: #f9fafb;
+     --card-bg: #ffffff;
+     --input-bg: #f3f4f6;
+   }
+
+   body {
+     color: #1f2937;
+   }
+
+   .has-text-white {
+     color: #111827 !important;
+   }
+
+   .has-text-grey-light {
+     color: #6b7280 !important;
+   }
+
+   .input.is-dark {
+     background-color: #ffffff;
+     border-color: #d1d5db;
+     color: #111827;
+   }
+
+   .input.is-dark::placeholder {
+     color: #9ca3af;
+   }
+
+   .auth-card {
+     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+     border: 1px solid #e5e7eb;
+   }
+
+   .custom-navbar {
+     background-color: #ffffff !important;
+     border-bottom: 1px solid #e5e7eb;
+   }
+
+   .card-overlay {
+     background: rgba(255, 255, 255, 0.9);
+     color: #111827;
+   }
+
+   .card-overlay .title {
+     color: #111827 !important;
+   }
+
+   .movie-card-container {
+     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+   }
+ }

@@ -21,7 +21,7 @@ Once it's running, you can open your browser and navigate to **`http://localhost
 
 ## Pushing Changes Cleanly
 
-Your `.gitignore` file is correctly configured to prevent generated files (`/node_modules`, `/css/main.css`, etc.) from being committed to the repository. This is crucial for keeping the project clean.
+Your `.gitignore` file is correctly configured to prevent generated files (`/node_modules`, `/css/main.css`, `/css/main.css.map`.) from being committed to the repository. This is crucial for keeping the project clean.
 
 You can use the following command to clean the node_modules manualy.
 ```bash

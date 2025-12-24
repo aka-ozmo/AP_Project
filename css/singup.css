@@ -1,38 +1,87 @@
 :root {
-            --primary-color: #4f46e5;
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
-            --input-bg: #334155;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-bg);
-            color: #f1f5f9;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .auth-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .input.is-dark {
-            background-color: var(--input-bg);
-            border-color: #475569;
-            color: white;
-        }
-        .input.is-dark::placeholder { color: #94a3b8; }
-        .button.is-indigo { background-color: var(--primary-color); color: white; border: none; }
-        .button.is-indigo:hover { background-color: #4338ca; }
-        .hidden { display: none !important; }
-        
-        /* Smooth transition for error messages */
-        .notification {
-            transition: all 0.3s ease;
-        }
+  --primary-color: #4f46e5;
+  --dark-bg: #0f172a;
+  --card-bg: #1e293b;
+  --input-bg: #334155;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--dark-bg);
+  color: #f1f5f9;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-card {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.input.is-dark {
+  background-color: var(--input-bg);
+  border-color: #475569;
+  color: white;
+}
+
+.input.is-dark::placeholder {
+  color: #94a3b8;
+}
+
+.button.is-indigo {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.button.is-indigo:hover {
+  background-color: #4338ca;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Smooth transition for error messages */
+.notification {
+  transition: all 0.3s ease;
+}
+
+/* Light Mode Overrides */
+@media (prefers-color-scheme: light) {
+  :root {
+    --dark-bg: #f9fafb;
+    --card-bg: #ffffff;
+    --input-bg: #f3f4f6;
+  }
+
+  body {
+    color: #1f2937;
+  }
+
+  .has-text-white {
+    color: #111827 !important;
+  }
+
+  .has-text-grey-light {
+    color: #6b7280 !important;
+  }
+
+  .input.is-dark {
+    background-color: #ffffff;
+    border-color: #d1d5db;
+    color: #111827;
+  }
+
+  .auth-card {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+  }
+}

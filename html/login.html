@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Torrentflix - Auth & HD Movies</title>
+  <title>Webflix - Auth & HD Movies</title>
 
   <!-- Load Bulma CSS -->
-  <link rel="stylesheet" href="../css/login.css">
   <link rel="stylesheet" href="../css/bulma.min.css">
+  <link rel="stylesheet" href="../css/login.css">
 
   <!-- Load Inter Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -24,8 +24,11 @@
   <!-- 1. AUTHENTICATION PAGE (The "Login/Register" Screen) -->
   <div id="auth-container">
     <div class="auth-card">
+      <a class="button is-small is-ghost has-text-grey-light mb-5" href="./homePage.html">
+        <i data-lucide="arrow-left" class="mr-1"></i> Back to Home
+      </a>
       <div class="has-text-centered mb-6">
-        <h1 class="title is-2 has-text-white">Torrent<span class="has-text-info">flix</span></h1>
+        <h1 class="title is-2 has-text-white">Web<span class="has-text-info">flix</span></h1>
         <p id="auth-subtitle" class="subtitle is-6 has-text-grey-light">Sign in to access your library</p>
       </div>
 
@@ -84,7 +87,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a href="#" class="navbar-item is-size-4 has-text-weight-bold">
-            <span class="has-text-info">Torrent</span>flix
+            <span class="has-text-info">Web</span>flix
           </a>
         </div>
         <div class="navbar-menu">
@@ -141,6 +144,11 @@
   <!-- Firebase Logic -->
   <script type="module" src="../js/login.js"></script>
 
+  <script>
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  </script>
 </body>
 
 </html>
