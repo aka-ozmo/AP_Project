@@ -29,7 +29,7 @@
       </a>
       <div class="has-text-centered mb-6">
         <h1 class="title is-2 has-text-white">Web<span class="has-text-info">flix</span></h1>
-        <p id="auth-subtitle" class="subtitle is-6 has-text-grey-light">Sign in to access your library</p>
+        <p id="auth-subtitle" class="subtitle is-6 has-text-grey-light">Sign in to access your Movies Gallary</p>
       </div>
 
       <form id="auth-form">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="field">
-          <label id="label-contact" class="label has-text-grey-light">Email or Phone</label>
+          <label id="label-contact" class="label has-text-grey-light">Email</label>
           <div class="control has-icons-left">
             <input id="auth-contact" class="input is-dark" type="text" placeholder="name@example.com" required>
             <span class="icon is-small is-left"><i data-lucide="mail"></i></span>
@@ -52,17 +52,20 @@
 
         <div class="field mb-1">
           <label class="label has-text-grey-light">Password</label>
-          <div class="control has-icons-left">
+          <div class="control has-icons-left has-icons-right">
             <input id="auth-password" class="input is-dark" type="password" placeholder="••••••••" required>
             <span class="icon is-small is-left"><i data-lucide="lock"></i></span>
+            <span id="password-visiblity-toggle" class="icon is-small is-right"
+              style="pointer-events: auto; cursor: pointer;"><i data-lucide="eye"></i></span>
           </div>
         </div>
 
         <!-- Forgot Password Link -->
         <div id="forgot-password-container">
-          <a href="resetpassword.html" class="forgot-password-link has-text-info"
-            onclick="handleForgotPassword(event)">Forgot Password?</a>
+          <a href="resetpassword.html" class="forgot-password-link has-text-info">Forgot Password?</a>
         </div>
+
+        <!-- onclick="handleForgotPassword(event)" -->
 
         <div class="notification is-danger is-light is-size-7 hidden mt-4" id="auth-error"></div>
         <div class="notification is-info is-light is-size-7 hidden mt-4" id="auth-message"></div>
@@ -75,69 +78,9 @@
       <div class="has-text-centered mt-5">
         <p class="is-size-7 has-text-grey-light">
           <span id="toggle-text">Don't have an account?</span>
-          <a href="singup.html" id="auth-toggle-btn" class="has-text-info has-text-weight-bold">Sign Up</a>
+          <a href="singup.html" class="has-text-info has-text-weight-bold">Sign Up</a>
         </p>
       </div>
-    </div>
-  </div>
-
-  <!-- 2. MAIN APP CONTENT (The "Dashboard/Index" Screen) -->
-  <div id="app-content">
-    <nav class="navbar custom-navbar is-dark is-fixed-top">
-      <div class="container">
-        <div class="navbar-brand">
-          <a href="#" class="navbar-item is-size-4 has-text-weight-bold">
-            <span class="has-text-info">Web</span>flix
-          </a>
-        </div>
-        <div class="navbar-menu">
-          <div class="navbar-end">
-            <div class="navbar-item has-text-grey-light is-size-7">
-              Logged in as: <span id="display-username" class="has-text-white ml-1">...</span>
-            </div>
-            <a id="logout-btn" class="navbar-item has-text-danger-light">Logout</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container pt-6 mt-5">
-      <div class="section">
-        <div class="level">
-          <div class="level-left">
-            <h2 class="title is-4">My Collection</h2>
-          </div>
-          <div class="level-right">
-            <div class="control has-icons-left">
-              <input id="movie-search" class="input is-rounded is-dark" type="text" placeholder="Search...">
-              <span class="icon is-left"><i data-lucide="search"></i></span>
-            </div>
-          </div>
-        </div>
-        <hr style="background-color: #334155;">
-        <div id="movie-grid" class="columns is-multiline is-mobile"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 3. MODAL FOR UPLOAD -->
-  <div id="upload-modal" class="modal">
-    <div class="modal-background" onclick="closeModal()"></div>
-    <div class="modal-card">
-      <header class="modal-card-head" style="background: #1e293b; border-color: #334155;">
-        <p class="modal-card-title has-text-white">Change Poster</p>
-      </header>
-      <section class="modal-card-body" style="background: #0f172a;">
-        <input type="file" id="file-input" class="input is-dark mb-4" accept="image/*">
-        <div id="upload-preview-container" class="has-text-centered p-4"
-          style="background: #1e293b; border-radius: 8px;">
-          <img id="upload-preview" style="max-height: 200px; border-radius: 4px;">
-        </div>
-      </section>
-      <footer class="modal-card-foot" style="background: #1e293b; border-color: #334155;">
-        <button id="confirm-upload" class="button is-indigo">Save Changes</button>
-        <button onclick="closeModal()" class="button is-ghost has-text-grey">Cancel</button>
-      </footer>
     </div>
   </div>
 
