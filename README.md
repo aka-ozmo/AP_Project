@@ -14,7 +14,8 @@ npm start
 ```
 Once it's running, you can open your browser and navigate to **`http://localhost:8080`** to see the application live.
 
-## Development Workflow
+
+## Development Workflow (instructure can avoid the following notes)
 
 *   **Styling**: Make all your CSS changes in the `css/main.scss` file. **Do not edit `css/main.css` directly**, as it is an auto-generated file and your changes will be overwritten by the Sass compiler.
 *   **HTML/JavaScript**: You can edit the HTML and any JavaScript files directly. The development server will serve the latest versions of these files when you refresh your browser.
