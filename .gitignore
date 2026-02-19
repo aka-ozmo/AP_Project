@@ -8,3 +8,6 @@
 # VS Code user-specific settings
 .vscode/*
 !.vscode/launch.json
+
+# Ignore secrets file
+firestore.js
