@@ -10,4 +10,4 @@
 !.vscode/launch.json
 
 # Ignore secrets file
-firestore.js
+js/firestore.js
